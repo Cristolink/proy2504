@@ -1,17 +1,22 @@
  <?php
-            $miconn=new mysqli("10.20.26.58", "root", "avaras08", "datospersonales");
+            $miconn=new mysqli("10.20.25.214", "root", "avaras08", "datosPersonales");
             
             if($miconn->connect_errno){
-                echo "Fallo al conectar a MySQL: (" . $miconn->connect_errno. ") ". $miconn->connect_errno;
+                echo "Fallo al conectar a MySQL: (" . $miconn->connect_errno. ") ". $miconn->connect_error;
             }
-            $nom=$_POST['nombre'];
-            $ape=$_POST['apellido'];
+            $nombre=$_POST['nombre'];
+            $apellido=$_POST['apellido'];
+            $infoconexion=$miconn->client_info;          
+               
+            $sql="INSERT INTO persona(nombre,apellido,host) VALUES('$nombre','$apellido','$infoconexion')";
             
-            $sql="INSERT INTO persona(nombre,apellido)";
-            $sql=$sql."values('$nom','$ape')";
-            /* Consultas de selección que devuelven un conjunto de resultados */
-            $resultado = $miconn->query($sql)
-           
+            $sqlip="select host from information_schema.processlist WHERE ID=connection_id();";
+            $resultado = $miconn->query($sqlip);
+
+        if($resultado = $miconn->query($sql))
+        {
+.                                                                                                                                                                    
+        }
            
         
         

@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $miconn=new mysqli("10.20.26.58", "root", "avaras08", "datospersonales");
+            $miconn=new mysqli("10.20.25.214", "root", "avaras08", "datospersonales");
             
             if($miconn->connect_errno){
                 echo "Fallo al conectar a MySQL: (" . $miconn->connect_errno. ") ". $miconn->connect_errno;
